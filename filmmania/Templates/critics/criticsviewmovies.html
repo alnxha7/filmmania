@@ -1,0 +1,48 @@
+{% extends 'critics/commonbase.html' %}
+{% load static %}
+{% block content %}
+
+{% if msg %}
+<script>
+    alert("{{msg}}")
+</script>
+{% endif %}
+
+<section class="w3l-grids">
+    <div class="grids-main py-5">
+        <div class="container py-lg-3">
+            <div class="headerhny-title">
+                <div class="w3l-title-grids">
+                    <div class="headerhny-left">
+                        <h3 class="hny-title">Movies</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="w3l-populohny-grids">
+                {% for i in abc %}
+                <div class="item vhny-grid">
+                    <div class="box16">
+                        <a href="/criticsview_moviesdetails?id={{i.id}}&name={{i.name}}">
+                            <figure>
+                                <img class="img-fluid" src="/static/assets/image/{{i.image}}" alt="">
+                            </figure>
+                            <div class="box-content">
+                                <h3 class="title">{{i.name}}</h3>
+                                <h4> <span class="post"><span class="fa fa-clock-o"> </span> {{i.duration}}
+
+                                    </span>
+
+                                    <span class="post fa fa-heart text-right"></span>
+                                </h4>
+                            </div>
+                            <span class="fa fa-play video-icon" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

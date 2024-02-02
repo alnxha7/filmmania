@@ -1,0 +1,88 @@
+{% extends 'admin/commonbase.html' %}
+{% load static %}
+{% block content %}
+
+<!--/user-->
+<section class="w3l-albums py-5" id="projects" style="margin-top: 5%;">
+    <div class="container py-lg-4">
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <div class="resp-tabs-container hor_1">
+                    <div class="albums-content">
+                        <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: xx-large; "> USERS </p>
+                        <div class="row">
+                            {% for i in abc %}
+                            <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
+                                <div class="slider-info">
+                                    <div class="message" style="margin-left: 10%;">
+                                        <p></p>
+                                        <a class="author-book-title">{{i.name}}</a>
+                                        <h4> <span class="post"> {{i.email}}
+                                            </span></h4>
+                                        <h4> <span class="post"> {{i.phone}}</span></h4>
+                                        <h4> <span class="post"> {{i.address}}
+                                            </span></h4>
+                                        </h4>
+                                        <a href="/approveuser?id={{i.userid_id}}" class="btn btn-success"
+                                            style="margin-top: 7%;">Approve</a>
+                                        <a href="/deleteuser?id={{i.userid_id}}" class="btn btn-danger"
+                                        style="margin-top: -50%; margin-left: 100%;">Reject</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!--//user-->
+
+<!--/Approved-->
+<section class="w3l-albums py-5" id="projects" style="margin-top: 5%;">
+    <div class="container py-lg-4">
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <div class="resp-tabs-container hor_1">
+                    <div class="albums-content">
+                        <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: xx-large; "> APPROVED </p>
+                        <div class="row">
+                            {% for i in efg %}
+                            <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
+                                <div class="slider-info">
+                                    <div class="message" style="margin-left: 10%;">
+                                        <p></p>
+                                        <a class="author-book-title">{{i.name}}</a>
+                                        <h4> <span class="post"> {{i.email}}
+                                            </span></h4>
+                                        <h4> <span class="post"> {{i.phone}}</span></h4>
+                                        <h4> <span class="post"> {{i.address}}
+                                            </span></h4>
+                                        </h4>
+                                        <a href="/approveuser?id={{i.userid_id}}" class="btn btn-success"
+                                            style="margin-top: 7%;">Approve</a>
+                                        <a href="/deleteuser?id={{i.userid_id}}" class="btn btn-danger"
+                                        style="margin-top: -50%; margin-left: 100%;">Reject</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!--//user-->
+
+
+{% endblock %}

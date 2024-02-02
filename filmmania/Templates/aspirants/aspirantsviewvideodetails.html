@@ -1,0 +1,114 @@
+{% extends 'aspirants/commonbase.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    button {
+        background-color: transparent;
+        border: none;
+        font-size: xx-large;
+    }
+</style>
+
+<section class="w3l-grids">
+    <div class="grids-main py-5">
+        <div class="container py-lg-3">
+            <div class="headerhny-title">
+                <div class="w3l-title-grids">
+                    <div class="headerhny-left">
+                        <h3 class="hny-title">View Videos</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="w3l-populohny-grids">
+                {% for i in abc %}
+                <div class="item vhny-grid">
+                    <a href="/aspirantsview_videodetails?id={{i.id}}&name={{i.name}}">
+                        <video width="400" height="400" controls>
+                            <source src="/static/assets/image/{{i.video}}" type="video/mp4">
+                        </video>
+
+                        <div class="box-content">
+                            <h3 class="title">{{i.name}}</h3>
+                        </div>
+                        <div class="abc text-center" style="background-color: rgba(255, 0, 0, 0);">
+                            <form action="" id="formhandler" onsubmit="submitform(event)">
+                                <a href="" style="font-size: xx-large;" type="submit">👍</a>
+                                <span>{{i.likes}}</span>
+                                <a href="" style="font-size: xx-large;" type="submit">👎</a>
+                                <span>{{i.dislikes}}</span>
+
+                            </form>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+</section>
+
+<!-- ###### VIEW REVIEW ####### -->
+
+<section class="w3l-albums py-5" id="projects" style="margin-top:-10%; margin-left:10%;">
+    <div class="container py-lg-4">
+        <div class="row" style="margin-top:-40%; margin-left:40%;">
+            <div class="col-lg-12 mx-auto">
+                <div class="resp-tabs-container hor_1">
+                    <div class="headerhny-title text-center" style="margin-left: -78%;">
+                        <h3 class="hny-title mb-0">View Comment</h3>
+                    </div>
+                    <div class="row" style="margin-top: -5%; margin-left: -6%;">
+                        {% for i in efg %}
+                        <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
+                            <div class="slider-info">
+                                <div class="message">
+                                    <a href="/asprepalyreviewvideo?id={{i.id}}">
+                                        <h4> <span class="post"> {{i.critid.name}}
+                                            </span></h4>
+                                        <a class="author-book-title">{{i.comment}}</a>
+                                        <h4> <span class="post"> Replied:
+                                            </span></h4>
+                                        <h4> <span class="post"> {{i.replay}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="w3l-albums py-5" id="projects" style="margin-top:10%; margin-left:10%;">
+    <div class="container py-lg-4">
+        <div class="row" style="margin-top:-40%; margin-left:40%;">
+            <div class="col-lg-12 mx-auto">
+                <div class="resp-tabs-container hor_1">
+                    <div class="headerhny-title text-center" style="margin-left: -78%;">
+                        <h3 class="hny-title mb-0">User Comment</h3>
+                    </div>
+                    <div class="row" style="margin-top: -5%; margin-left: -6%;">
+                        {% for i in vbc %}
+                        <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
+                            <div class="slider-info">
+                                <div class="message">
+                                    <a href="/asprepalyuserreviewvideo?id={{i.id}}">
+                                        <h4> <span class="post"> {{i.userid.name}}
+                                            </span></h4>
+                                        <a class="author-book-title">{{i.comment}}</a>
+                                        <h4> <span class="post"> Replied:
+                                            </span></h4>
+                                        <h4> <span class="post"> {{i.replay}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

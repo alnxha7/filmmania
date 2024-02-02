@@ -1,0 +1,174 @@
+{% extends 'critics/commonbase.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    button {
+        background-color: transparent;
+        border: none;
+        font-size: xx-large;
+    }
+</style>
+
+{% if messages %}
+{% for message in messages %}
+<script>
+    alert("{{message}}")
+</script>
+{% endfor %}
+{% endif %}
+
+<section class="w3l-grids">
+    <div class="grids-main py-5">
+        <div class="container py-lg-3">
+            <div class="headerhny-title">
+                <div class="w3l-title-grids">
+                    <div class="headerhny-left">
+                        <h3 class="hny-title">Movies</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="w3l-populohny-grids">
+                {% for i in abc %}
+                <div class="item vhny-grid">
+                    <div class="box16">
+                        <figure>
+                            <img class="img-fluid" src="/static/assets/image/{{i.image}}" alt="">
+                        </figure>
+                        <div class="box-content">
+                            <h3 class="title">{{i.name}}</h3>
+                            <h4> <span class="post"><span class="fa fa-clock-o"> </span> {{i.duration}}
+                                </span>
+                            </h4>
+
+                        </div>
+
+                    </div>
+                    <div class="abc text-center" style="background-color: rgba(255, 0, 0, 0);">
+                        <form action="" id="formhandler" onsubmit="submitform(event)">
+                            <a href="/like?id={{i.id}}" style="font-size: xx-large;" type="submit">👍</a>
+                            <span>{{i.likes}}</span>
+                            <a href="/dislike?id={{i.id}}" style="font-size: xx-large;" type="submit">👎</a>
+                            <span>{{i.dislikes}}</span>
+
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ###### ADD REVIEW ####### -->
+
+                <section class="w3l-contact-1">
+                    <div class="contacts-9 py-5">
+                        <div class="container py-lg-4" style="margin-top: -50%;">
+                            <div class="headerhny-title text-center">
+                                <h3 class="hny-title mb-0">Add Comment</h3>
+                            </div>
+                            <div class="contact-view mt-lg-5 mt-4">
+                                <div class="conhny-form-section">
+                                    <form method="post" class="formhny-sec" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="form-grids">
+
+                                            <div class="form-input" style="width:600%;">
+                                                <input type="text" name="Name" value="{{i.name}}"
+                                                    placeholder="Enter your name *" required="" readonly />
+                                            </div>
+
+                                            <div class="form-input"
+                                                style="margin-top: 100%; width: 600%; margin-left: -140%;">
+                                                <input type="file" name="pdf" placeholder="Enter your Comment *"
+                                                    required="" />
+                                            </div>
+
+                                        </div>
+                                        <div class="submithny text-right mt-4" style="margin-right: -220px;">
+                                            <button class="btn read-button">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    </div>
+</section>
+
+<section class="w3l-albums py-5" id="projects" style="margin-top: -10%; margin-left:5%;">
+    <div class="container py-lg-4">
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <div class="resp-tabs-container hor_1">
+                    <div class="headerhny-title text-center" style="margin-left: -78%;">
+                        <h3 class="hny-title mb-0">View Comment</h3>
+                    </div>
+                    <div class="row" style="margin-top: 2%;">
+                        {% for i in efg %}
+                        <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
+                            <div class="slider-info">
+                                <div class="message">
+                                    <p></p>
+                                    <h4> <span class="post"> {{i.critid.name}}
+                                        </span></h4>
+                                        <a href="/static/assets/image/{{i.pdf}}" download>Download</a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+<section class="w3l-albums py-5" id="projects" style="margin-top: -5%; margin-left:5%;">
+    <div class="container py-lg-4">
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <div class="resp-tabs-container hor_1">
+                    <div class="headerhny-title text-center" style="margin-left: -78%;">
+                        <h3 class="hny-title mb-0">User Comment</h3>
+                    </div>
+                    <div class="row" style="margin-top: 2%;">
+
+                        {% for i in hdf %}
+                        <div class="col-lg-4 new-relise-gd mt-lg-0 mt-0">
+                            <div class="slider-info">
+                                <div class="message">
+                                    <p></p>
+                                    <h4> <span class="post"> {{i.userid.name}}
+                                        </span></h4>
+                                    <a class="author-book-title">{{i.comment}}</a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+
+<script>
+    function submitform(event) {
+        event.preventDefault();
+    }
+</script>
+
+
+{% endblock %}
